@@ -8,7 +8,7 @@ $.ajax({
     var sender = r.thread[0].message[0].sender;
     console.log('sender', sender)
    $.each( r.thread, function(i, j){
-        
+        conversa += '<p style="position:relative;padding-top: 57px"; >'+j.data+'</p>'
         $.each(j.message, function(a, b){    
             if( sender == b.sender ){
                 console.log('sender')
