@@ -8,14 +8,7 @@ $objeto1 = array(
     's_read' => 1,
     'time' => '2019-02-26 10:32:55'
 );
-$objeto4 = array(
-    'id' => 1,
-    'from' => 1,
-    'to' => 2,
-    'message' => 'Mensagem 2',
-    's_read' => 1,
-    'time' => '2019-02-28 10:32:55'
-);
+
 
 $objeto2 = array(
     'id' => 2,
@@ -34,6 +27,14 @@ $objeto3 = array(
     's_read' => 1,
     'time' => '2019-02-27 08:38:20'
 );
+$objeto4 = array(
+    'id' => 1,
+    'from' => 2,
+    'to' => 1,
+    'message' => 'Mensagem 2',
+    's_read' => 1,
+    'time' => '2019-02-28 10:32:55'
+);
 $objeto5 = array(
     'id' => 3,
     'from' => 1,
@@ -44,8 +45,8 @@ $objeto5 = array(
 );
 $objeto6 = array(
     'id' => 3,
-    'from' => 1,
-    'to' => 2,
+    'from' => 2,
+    'to' => 1,
     'message' => 'Mensagem 3',
     's_read' => 1,
     'time' => '2019-03-03 08:38:20'
@@ -84,9 +85,7 @@ foreach ($messages as $message){
     }
     else
     {
-        //$key = array_search($date, $sorted_date['data']);
-        $key = array_seach_f($date, $sorted_date )  ;  
-        echo "Key $key \n";
+        $key = array_seach_f($date, $sorted_date )  ;          
         $sorted_date[$key]['message'][] = $chat;
     }
 }
@@ -94,9 +93,9 @@ $response = [
     'success' => true,
     'thread'  => $sorted_date
 ];
-print_r( $sorted_date );
+
 header('Content-Type: application/json');
-//echo json_encode($response);
+echo json_encode($response);
 function in_array_r($item , $array) {
     return preg_match('/"'.preg_quote($item, '/').'"/i' , json_encode($array));
 }
@@ -105,17 +104,11 @@ function in_array_r($item , $array) {
  {
      $index = -1;
      foreach ($array as $key => $value) {
-         
          if( in_array( $data, $value ) ){
-                
-                echo $data."\n";
                 $index = $key;
                 break;
             } 
-       
-        
      }
-     
      return $index;
  }
 ?>
