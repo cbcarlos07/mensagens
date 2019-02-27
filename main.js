@@ -8,19 +8,26 @@ $.ajax({
     var sender = r.thread[0].message[0].sender;
     console.log('sender', sender)
    $.each( r.thread, function(i, j){
-        conversa += '<p style="position:relative;padding-top: 57px"; >'+j.data+'</p>'
+        conversa += '<div class="col-xs-12">'+j.data+'</div>'+
+                    '<div class="row"></div>'
         $.each(j.message, function(a, b){    
             if( sender == b.sender ){
                 console.log('sender')
-                conversa += '<div class=" col-xs-12" style="width: 90%; float: left; background-color: yellow" >'+
-                           '     <span>'+b.body+'</span>'+
-                           '</div>' +
+                conversa += '<div class="col-xs-12">'+
+                            '  <div class=" col-xs-12" style="width: 90%; float: left; background-color: yellow" >'+
+                            '     <span>'+b.body+'</span>'+
+                            '  </div>' +
+                            '</div>'
+                           '<div class="col-xs-12"></div>' +
                            '<div class="row"></div>' 
 
             }else{
-                conversa += '<div class="col-xs-5" style="width: 90%; float: right; background: red" >'+
+                conversa += '<div class="col-xs-12">'+
+                            '  <div class="col-xs-12" style="width: 90%; float: right; background: red" >'+
                             '     <span>'+b.body+'</span>'+
+                            '   </div>'+
                             '</div>'+
+                            '<div class="col-xs-12"></div>' +
                             '<div class="row"></div>' 
 
             }
